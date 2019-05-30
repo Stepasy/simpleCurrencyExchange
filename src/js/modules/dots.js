@@ -1,6 +1,8 @@
 const curr = (($) => {
   const curren = () => {
     let currencies = [];
+    let flag = true;
+
     const $button = $('.exchange');
     const $sellInput = $('.sell-input');
     const $sellSelect = $('.sell-select');
@@ -24,7 +26,10 @@ const curr = (($) => {
         },
         success(data) {
           currencies = data;
-          renderSelect(currencies);
+          if (flag) {
+            renderSelect(currencies);
+            flag = false;
+          }
         },
       });
     };
